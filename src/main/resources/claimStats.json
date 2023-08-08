@@ -1,0 +1,32 @@
+[
+    {
+        "year": "2023",
+        "claimType": "Non-Fatal",
+        "numberOfClaims": 150
+    },
+    {
+        "year": "2022",
+        "claimType": "Non-Fatal",
+        "numberOfClaims": 604
+    },
+    {
+        "year": "2023",
+        "claimType": "Fatal",
+        "numberOfClaims": 44
+    },
+    {
+        "year": "2023",
+        "claimType": "Disease",
+        "numberOfClaims": 34
+    },
+    {
+        "year": "2022",
+        "claimType": "Disease",
+        "numberOfClaims": 114
+    },
+    {
+        "year": "2022",
+        "claimType": "Fatal",
+        "numberOfClaims": 122
+    }
+]

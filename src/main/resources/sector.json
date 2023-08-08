@@ -1,0 +1,186 @@
+[
+    {
+        "numberOfEmployers": 1944,
+        "classCode": "2001",
+        "classDescription": "Transport, Etc",
+        "coveredThisYear": 26921,
+        "coveredLastYear": 23441,
+        "numberOfClaims": 1518
+    },
+    {
+        "numberOfEmployers": 302,
+        "classCode": "901",
+        "classDescription": "Glass, Brick Site & Asbestos",
+        "coveredThisYear": 2964,
+        "coveredLastYear": 2751,
+        "numberOfClaims": 163
+    },
+    {
+        "numberOfEmployers": 2420,
+        "classCode": "101",
+        "classDescription": "Agriculture  &  Forestry",
+        "coveredThisYear": 78009,
+        "coveredLastYear": 115055,
+        "numberOfClaims": 2225
+    },
+    {
+        "numberOfEmployers": 1367,
+        "classCode": "801",
+        "classDescription": "Food, Drink & Tobacco",
+        "coveredThisYear": 32604,
+        "coveredLastYear": 28164,
+        "numberOfClaims": 1480
+    },
+    {
+        "numberOfEmployers": 1094,
+        "classCode": "401",
+        "classDescription": "Charities, Religious, Political",
+        "coveredThisYear": 48120,
+        "coveredLastYear": 21245,
+        "numberOfClaims": 269
+    },
+    {
+        "numberOfEmployers": 14140,
+        "classCode": "301",
+        "classDescription": "Building Construction",
+        "coveredThisYear": 46505,
+        "coveredLastYear": 26786,
+        "numberOfClaims": 2021
+    },
+    {
+        "numberOfEmployers": 178,
+        "classCode": "1402",
+        "classDescription": "Mining Quarrying Industry",
+        "coveredThisYear": 3105,
+        "coveredLastYear": 2719,
+        "numberOfClaims": 64
+    },
+    {
+        "numberOfEmployers": 270,
+        "classCode": "DOM",
+        "classDescription": "Domestic",
+        "coveredThisYear": 192,
+        "coveredLastYear": 242,
+        "numberOfClaims": 4
+    },
+    {
+        "numberOfEmployers": 1432,
+        "classCode": "601",
+        "classDescription": "Educational Services",
+        "coveredThisYear": 20449,
+        "coveredLastYear": 21474,
+        "numberOfClaims": 249
+    },
+    {
+        "numberOfEmployers": 2304,
+        "classCode": "1701",
+        "classDescription": "Professional Services Etc",
+        "coveredThisYear": 17796,
+        "coveredLastYear": 18556,
+        "numberOfClaims": 650
+    },
+    {
+        "numberOfEmployers": 83,
+        "classCode": "1201",
+        "classDescription": "Local Authorities",
+        "coveredThisYear": 3971,
+        "coveredLastYear": 4202,
+        "numberOfClaims": 81
+    },
+    {
+        "numberOfEmployers": 15716,
+        "classCode": "1901",
+        "classDescription": "Trade & Commerce Etc",
+        "coveredThisYear": 94945,
+        "coveredLastYear": 59298,
+        "numberOfClaims": 913
+    },
+    {
+        "numberOfEmployers": 345,
+        "classCode": "701",
+        "classDescription": "Entertainment",
+        "coveredThisYear": 3473,
+        "coveredLastYear": 3835,
+        "numberOfClaims": 68
+    },
+    {
+        "numberOfEmployers": 1646,
+        "classCode": "2101",
+        "classDescription": "Wood, Furniture Industries",
+        "coveredThisYear": 3105,
+        "coveredLastYear": 4912,
+        "numberOfClaims": 432
+    },
+    {
+        "numberOfEmployers": 4150,
+        "classCode": "1501",
+        "classDescription": "Personal Services, Hotels, Etc",
+        "coveredThisYear": 52173,
+        "coveredLastYear": 50525,
+        "numberOfClaims": 1236
+    },
+    {
+        "numberOfEmployers": 432,
+        "classCode": "1601",
+        "classDescription": "Publishing, Printing Paper",
+        "coveredThisYear": 2350,
+        "coveredLastYear": 2455,
+        "numberOfClaims": 134
+    },
+    {
+        "numberOfEmployers": 3571,
+        "classCode": "1001",
+        "classDescription": "Iron, Steel Industries, Etc",
+        "coveredThisYear": 31420,
+        "coveredLastYear": 28709,
+        "numberOfClaims": 2170
+    },
+    {
+        "numberOfEmployers": 558,
+        "classCode": "201",
+        "classDescription": "Banking Finance & Insurance",
+        "coveredThisYear": 22743,
+        "coveredLastYear": 21905,
+        "numberOfClaims": 224
+    },
+    {
+        "numberOfEmployers": 585,
+        "classCode": "1301",
+        "classDescription": "Medical Services",
+        "coveredThisYear": 7654,
+        "coveredLastYear": 8321,
+        "numberOfClaims": 71
+    },
+    {
+        "numberOfEmployers": 821,
+        "classCode": "1401",
+        "classDescription": "Mining, Quarrying Industries",
+        "coveredThisYear": 48477,
+        "coveredLastYear": 50824,
+        "numberOfClaims": 6492
+    },
+    {
+        "numberOfEmployers": 196,
+        "classCode": "1801",
+        "classDescription": "Textile Industries",
+        "coveredThisYear": 1878,
+        "coveredLastYear": 1808,
+        "numberOfClaims": 155
+    },
+    {
+        "numberOfEmployers": 493,
+        "classCode": "501",
+        "classDescription": "Chemical Industries",
+        "coveredThisYear": 19625,
+        "coveredLastYear": 15741,
+        "numberOfClaims": 840
+    },
+    {
+        "numberOfEmployers": 40,
+        "classCode": "1101",
+        "classDescription": "Leather Industries ,etc",
+        "coveredThisYear": 525,
+        "coveredLastYear": 473,
+        "numberOfClaims": 46
+    }
+]

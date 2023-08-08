@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>WCFCB Report</title>
+		
+		<style type="text/css">
+			@page { 
+				size: A4 portrait;
+				margin: 4mm 6mm;
+				background-image: url('classpath:static/images/logo-trans10bw.png') !important;					 
+				background-size: 600px 600px;					
+				background-position: center;
+			    background-repeat: no-repeat;
+			}
+			
+			*,
+			*::before,
+			*::after {			 	
+	            box-sizing: border-box;
+	            font-family: 'Calibri', 'Segoe UI', Arial, 'Trebuchet MS', Helvetica ;
+	            font-size: 11pt;
+			}
+			
+	        .container {
+				max-width: 898px;
+				padding: 0px 5px;
+				padding-bottom: 10px;
+				background: white;
+				margin: 5px auto;
+				display: flex;
+				flex-direction: column;
+				background: transparent;
+			}
+								
+			table {
+				width: 100%;
+				padding: 50px 0px;
+				border-collapse: collapse;
+			}
+			
+			table thead tr th {
+				text-align: left;
+				background-color: whitesmoke;
+				padding: 5px;
+			}
+			
+			td { 
+				padding: 2px;
+				text-align: left;
+			}
+			#sectorTable tbody tr td {
+				border-bottom: 1px solid #C0C0C0;
+			}
+			
+			#sectorTable tbody tr td.right {
+				text-align: right;
+			}
+			
+			#sectorTable thead tr th.right {
+				text-align: right;
+			}
+			
+			#sectorTable thead tr th {
+				border-bottom: 2px solid gray;
+			}
+			
+			tr td {
+				border: 0px solid black;
+			}
+			
+			div.claim-stats {
+				text-align: center;
+				align-content: center;
+				justify-content: center;
+				border: 0px solid black;
+				padding: 2px;
+			}
+			
+			div.header {
+				font-weight: 600;
+				font-size: 14pt;
+				border-bottom: 1px solid whitesmoke;
+				margin-bottom: 3px;
+			}
+			
+			.year{
+				background-color: whitesmoke;
+				padding: 5px;
+				margin: 3px;
+				text-align: center;
+			}
+			
+			div.meta-data {
+				padding: 0 5px;
+				margin: 1px;
+			}
+			
+			h1 {
+				font-size: 14pt;
+			}
+			
+			h2 {
+				font-size: 13pt;
+			}
+			        
+		</style>
+	</head>
+	<body>
+	
+		<div class="container">	
+			<div><h1>Cover Page</h1></div>
+			<div style="page-break-before:always; break-before: page;"></div>
+			
+			<div><h1>Contents</h1></div>
+			<div style="page-break-before:always; break-before: page;"></div>
+			
+			
+			<div class="claim-stats">
+				<div class="header"><h1>Claim Statistics</h1></div>
+				
+				<div class="claim-breakdown" th:each="claim : ${claimStats}"
+					style="border: 5px solid #C0C0C0; 
+						margin: 2px; 
+						padding: 12px; border-radius: 10px;
+						width: 45%; display: inline-block; ">
+					<h2 class="year" th:text="${claim.year}">
+					</h2>
+					<div class="meta-data">
+						<table>
+							<tbody>
+								<tr th:each="claimMeta : ${claim.meta}">
+									<td th:text="${claimMeta.claimType}"></td>
+									<td th:text="${claimMeta.numberOfClaims}" style="font-weight: bold;"></td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+				</div>				
+			</div>	
+			
+			<div style="page-break-before:always; break-before: page;"></div>
+			<div class="revenue-stats" style="background-color: #C0C0C0;">
+				<h1 class="header">Revenue Stats</h1>
+				[[${employerStats}]]
+			</div>
+			
+			
+			<div style="page-break-before:always; break-before: page;"></div>
+			<div class="sector-stats">
+				<h1 class="header">Sector Stats</h1>
+				
+				<table id="sectorTable">
+					<caption>Sector analysis for they financial year: [[${financialYear}]]</caption>
+					<thead>
+						<tr>
+							<th>Class</th>
+							<th>Code</th>
+							<th class="right"># Employers</th>
+							<th class="right"># Employees Prev Year</th>
+							<th class="right"># Employees This Year</th>
+							<th class="right">Claims</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="sector : ${sectorStats}">
+							<td th:text="${sector.classDescription}"></td>
+							<td th:text="${sector.classCode}"></td>
+							<td class="right"
+								th:text="${#numbers.formatDecimal(sector.numberOfEmployers, 0,'COMMA', 0, 'POINT')}"></td>
+							<td class="right"
+								th:text="${#numbers.formatDecimal(sector.coveredLastYear, 0,'COMMA', 0, 'POINT')}"></td>
+							<td class="right"
+								th:text="${#numbers.formatDecimal(sector.coveredThisYear, 0,'COMMA', 0, 'POINT')}"></td>
+							<td class="right"
+								th:text="${#numbers.formatDecimal(sector.numberOfClaims, 0,'COMMA', 0, 'POINT')}"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+			
+			<div style="page-break-before:always; break-before: page;"></div>
+			<div class="payroll-stats">
+				<h1 class="header">Payroll Statistics</h1>
+				
+				<div th:each="payrollStat : ${payrollStats}" 
+					style="width: 49%; display: inline-block;
+						box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+						padding: 5px 0px 5px 5px;">
+					<h2 th:text="${payrollStat.category}" style="border-bottom: 1px solid gray;"></h2>
+					<div th:each="tranYearDTO : ${payrollStat.tranYears}" >
+						<h3 th:text="${tranYearDTO.tranYear}"></h3>
+						<div th:each="metaData : ${tranYearDTO.meta}">
+							<span th:text="${#numbers.formatDecimal(metaData.numberOfBeneficiaries, 0,'COMMA', 0, 'POINT')}"></span>							
+							<span th:text="${#numbers.formatDecimal(metaData.totalPaid, 0,'COMMA', 2, 'POINT')}" 
+								style="font-weight: 600;"></span>
+						</div>
+					</div>
+				</div>
+				
+			</div>	
+			
+			<div style="page-break-before:always; break-before: page;"></div>
+			<div class="payroll-dep-stats" style="margin: 5px 0px;">
+				<h1 class="header">Payroll - Dependant Breakdown</h1>
+				[[${payrollDependantStats}]]
+			</div>
+			
+				
+		</div>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+[
+    {
+        "category": "Pensioners",
+        "tranYears": [
+            {
+                "tranYear": "2023",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 6971,
+                        "totalPaid": 26893973.28
+                    }
+                ]
+            },
+            {
+                "tranYear": "2022",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 7800,
+                        "totalPaid": 110783315.07
+                    }
+                ]
+            },
+            {
+                "tranYear": "2021",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 6607,
+                        "totalPaid": 18862652.55
+                    }
+                ]
+            },
+            {
+                "tranYear": "2020",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 6396,
+                        "totalPaid": 19571874.51
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Dependants",
+        "tranYears": [
+            {
+                "tranYear": "2023",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 5216,
+                        "totalPaid": 15526856.32
+                    }
+                ]
+            },
+            {
+                "tranYear": "2022",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 5497,
+                        "totalPaid": 57301071.76
+                    }
+                ]
+            },
+            {
+                "tranYear": "2021",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 5051,
+                        "totalPaid": 14337634.85
+                    }
+                ]
+            },
+            {
+                "tranYear": "2020",
+                "meta": [
+                    {
+                        "numberOfBeneficiaries": 5040,
+                        "totalPaid": 13954708.67
+                    }
+                ]
+            }
+        ]
+    }
+]

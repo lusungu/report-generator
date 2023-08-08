@@ -1,0 +1,30 @@
+[
+    {
+        "category": "Dependant",
+        "tranYear": "2023",
+        "relation": "Wife",
+        "numberOfBeneficiaries": 3316,
+        "totalPaid": 14156089.37
+    },
+    {
+        "category": "Dependant",
+        "tranYear": "2023",
+        "relation": "Daughter",
+        "numberOfBeneficiaries": 938,
+        "totalPaid": 643106.09
+    },
+    {
+        "category": "Dependant",
+        "tranYear": "2023",
+        "relation": "Husband",
+        "numberOfBeneficiaries": 5,
+        "totalPaid": 21149.58
+    },
+    {
+        "category": "Dependant",
+        "tranYear": "2023",
+        "relation": "Son",
+        "numberOfBeneficiaries": 957,
+        "totalPaid": 706511.29
+    }
+]
