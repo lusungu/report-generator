@@ -8,6 +8,6 @@ import lombok.Data;
 public class ClaimDTO {
 	
 	private String year;
-	List<ClaimMetaDTO> meta;
+	private List<ClaimMetaDTO> meta;
 
 }

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	 
 		<title>WCFCB Report</title>
 		
 		<style type="text/css">
 			@page { 
 				size: A4 portrait;
-				margin: 4mm 6mm;
-				background-image: url('classpath:static/images/logo-trans10bw.png') !important;					 
+				margin: 4mm 6mm;				 
 				background-size: 600px 600px;					
 				background-position: center;
 			    background-repeat: no-repeat;
@@ -143,7 +143,7 @@
 			<div style="page-break-before:always; break-before: page;"></div>
 			<div class="revenue-stats" style="background-color: #C0C0C0;">
 				<h1 class="header">Revenue Stats</h1>
-				[[${employerStats}]]
+				
 			</div>
 			
 			
@@ -152,7 +152,7 @@
 				<h1 class="header">Sector Stats</h1>
 				
 				<table id="sectorTable">
-					<caption>Sector analysis for they financial year: [[${financialYear}]]</caption>
+					<caption>Sector analysis for they financial year: </caption>
 					<thead>
 						<tr>
 							<th>Class</th>
@@ -168,13 +168,13 @@
 							<td th:text="${sector.classDescription}"></td>
 							<td th:text="${sector.classCode}"></td>
 							<td class="right"
-								th:text="${#numbers.formatDecimal(sector.numberOfEmployers, 0,'COMMA', 0, 'POINT')}"></td>
+								th:text="${sector.numberOfEmployers}"></td>
 							<td class="right"
-								th:text="${#numbers.formatDecimal(sector.coveredLastYear, 0,'COMMA', 0, 'POINT')}"></td>
+								th:text="${sector.coveredLastYear}"></td>
 							<td class="right"
-								th:text="${#numbers.formatDecimal(sector.coveredThisYear, 0,'COMMA', 0, 'POINT')}"></td>
+								th:text="${sector.coveredThisYear}"></td>
 							<td class="right"
-								th:text="${#numbers.formatDecimal(sector.numberOfClaims, 0,'COMMA', 0, 'POINT')}"></td>
+								th:text="${sector.numberOfClaims}"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -193,8 +193,8 @@
 					<div th:each="tranYearDTO : ${payrollStat.tranYears}" >
 						<h3 th:text="${tranYearDTO.tranYear}"></h3>
 						<div th:each="metaData : ${tranYearDTO.meta}">
-							<span th:text="${#numbers.formatDecimal(metaData.numberOfBeneficiaries, 0,'COMMA', 0, 'POINT')}"></span>							
-							<span th:text="${#numbers.formatDecimal(metaData.totalPaid, 0,'COMMA', 2, 'POINT')}" 
+							<span th:text="${metaData.numberOfBeneficiaries}"></span>							
+							<span th:text="${metaData.totalPaid}" 
 								style="font-weight: 600;"></span>
 						</div>
 					</div>

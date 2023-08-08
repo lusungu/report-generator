@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.logstash.logback.encoder.org.apache.commons.lang.WordUtils;
 
 @Slf4j
 @Service
@@ -65,7 +64,7 @@ public class ReportServiceImpl implements ReportService {
 
 		List<SectorStatisticsDTO> sectorStats = translateToSectorStats(response);
 		for (SectorStatisticsDTO sector : sectorStats) {
-			sector.setClassDescription(WordUtils.capitalizeFully(sector.getClassDescription()));
+			sector.setClassDescription(sector.getClassDescription());
 		}
 		
 		return sectorStats;
