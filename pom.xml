@@ -16,6 +16,7 @@
 	<description>Report Generator - Generates reports in word, excel, pdf and powerpoint.</description>
 	<properties>
 		<java.version>17</java.version>
+		<openhtml.version>1.0.10</openhtml.version>
 	</properties>
 
 	<profiles>
@@ -91,16 +92,39 @@
 
 		<!-- PDF -->
 		<dependency>
-			<groupId>org.xhtmlrenderer</groupId>
-			<artifactId>flying-saucer-pdf</artifactId>
-			<version>9.1.22</version>
+			<groupId>com.openhtmltopdf</groupId>
+			<artifactId>openhtmltopdf-pdfbox</artifactId>
+			<version>${openhtml.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>ognl</groupId>
-			<artifactId>ognl</artifactId>
-			<version>3.4.1</version>
+			<!-- Required for PDF output. -->
+			<groupId>com.openhtmltopdf</groupId>
+			<artifactId>openhtmltopdf-pdfbox</artifactId>
+			<version>${openhtml.version}</version>
 		</dependency>
+
+		<dependency>
+			<!-- Required for image output only. -->
+			<groupId>com.openhtmltopdf</groupId>
+			<artifactId>openhtmltopdf-java2d</artifactId>
+			<version>${openhtml.version}</version>
+		</dependency>
+
+		<dependency>
+			<!-- Optional, leave out if you do not need logging via slf4j. -->
+			<groupId>com.openhtmltopdf</groupId>
+			<artifactId>openhtmltopdf-slf4j</artifactId>
+			<version>${openhtml.version}</version>
+		</dependency>
+
+		<dependency>
+			<!-- Optional, leave out if you do not need SVG support. -->
+			<groupId>com.openhtmltopdf</groupId>
+			<artifactId>openhtmltopdf-svg-support</artifactId>
+			<version>${openhtml.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

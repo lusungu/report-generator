@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
 	 
 		<title>WCFCB Report</title>
 		
@@ -338,6 +338,7 @@
 			
 			<div style="page-break-before:always; break-before: page;"></div>
 			<div class="revenue-stats" style="background-color: #C0C0C0;">
+
 				<h1 >Revenue Stats</h1>
 				
 			</div>
@@ -382,26 +383,6 @@
 			<div style="page-break-before:always; break-before: page;"></div>
 			<div class="payroll-stats">
 				<h1 class="header">Payroll Statistics</h1>
-				
-				<!-- <div style="margin: auto;">
-					<div th:each="payrollStat : ${payrollStats}" class="payroll">
-						<h2 th:text="${payrollStat.category}" class="category"></h2>
-						<div class="years">
-							<div th:each="tranYearDTO : ${payrollStat.tranYears}" class="year">
-								<h3 th:text="${tranYearDTO.tranYear}" style="text-align: left;"></h3>
-								<table class="meta-data">
-									<tbody>
-										<tr th:each="metaData : ${tranYearDTO.meta}">
-											<td th:text="${metaData.numberOfBeneficiaries}"></td>							
-											<td class="right" th:text="'K ' + ${#numbers.formatDecimal(metaData.totalPaid, 0, 'COMMA', 2, 'POINT')}" 
-												style="font-weight: 600;"></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div> -->
 
 				<div th:each="payrollStat : ${payrollStats}">
 					<div class="header"><h1 th:text="${payrollStat.category}">Claim Statistics</h1></div>
@@ -439,15 +420,16 @@
 							<th class="right">number Of Beneficiaries</th>
 							<th class="right">Total Paid</th>
 						</tr>
-						<tbody>
-							<tr th:each="dependant : ${payrollDependantStats}">
-								<td th:text="${dependant.tranYear}"></td>
-								<td th:text="${dependant.relation}"></td>
-								<td th:text="${dependant.numberOfBeneficiaries}" class="right"></td>
-								<td th:text="${#numbers.formatDecimal(dependant.totalPaid, 0, 'COMMA', 2, 'POINT')}" class="right" style="font-weight: 600;"></td>
-							</tr>
-						</tbody>
 					</thead>
+					<tbody>
+						<tr th:each="dependant : ${payrollDependantStats}">
+							<td th:text="${dependant.tranYear}"></td>
+							<td th:text="${dependant.relation}"></td>
+							<td th:text="${dependant.numberOfBeneficiaries}" class="right"></td>
+							<td th:text="${#numbers.formatDecimal(dependant.totalPaid, 0, 'COMMA', 2, 'POINT')}" class="right" style="font-weight: 600;"></td>
+						</tr>
+					</tbody>
+					
 				</table>
 			</div>
 			
