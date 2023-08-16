@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
 	 
 		<title>WCFCB Report</title>
 		
@@ -18,8 +18,12 @@
 			*::before,
 			*::after {			 	
 	            box-sizing: border-box;
-	            font-family: 'Calibri', 'Segoe UI', Arial, 'Trebuchet MS', Helvetica ;
+	            font-family: 'Nunito Sans','Calibri', 'Segoe UI', Arial, 'Trebuchet MS', Helvetica ;
 	            font-size: 11pt;
+			}
+			:root{
+				--primary: #059669;
+				--black: #1e293b;
 			}
 			
 	        .container {
@@ -32,42 +36,46 @@
 				flex-direction: column;
 				background: transparent;
 			}
-								
+
+			.header{
+				padding: 10px 0px;
+				border-bottom: solid 1px #1e293b;
+			}
+
+			.good{
+				color: #059669;
+			}
+			.bad{
+				color: red;
+			}
+			.cover{
+				text-align: center;
+				margin: auto;
+				padding: 2cm;
+			}
+
+			.cover .logo{
+				width: 120px;
+				height: 120px;
+				margin: 30px auto;
+			}
+							
+			.cover h1{
+				margin: 100px auto;
+				font-weight: bolder;
+			}
+			.center {
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+			}
 			table {
 				width: 100%;
 				padding: 50px 0px;
 				border-collapse: collapse;
+				border: none;
 			}
 			
-			table thead tr th {
-				text-align: left;
-				background-color: whitesmoke;
-				padding: 5px;
-			}
-			
-			td { 
-				padding: 2px;
-				text-align: left;
-			}
-			#sectorTable tbody tr td {
-				border-bottom: 1px solid #C0C0C0;
-			}
-			
-			#sectorTable tbody tr td.right {
-				text-align: right;
-			}
-			
-			#sectorTable thead tr th.right {
-				text-align: right;
-			}
-			
-			#sectorTable thead tr th {
-				border-bottom: 2px solid gray;
-			}
-			
-			tr td {
-				border: 0px solid black;
-			}
 			
 			div.claim-stats {
 				text-align: center;
@@ -103,47 +111,236 @@
 			h2 {
 				font-size: 13pt;
 			}
-			        
+			td, th, caption{
+				padding: 12px 8px;
+				font-size: 10pt;
+			}
+			th{
+				text-align: left;
+			}
+			tr:nth-child(even){
+				background: #eeeeee;
+			}
+			
+			tbody tr td.right {
+				text-align: right;
+			}
+			
+			thead tr th.right {
+				text-align: right;
+			}
+			
+			thead{
+				background: #1e293b;
+				color: white;
+			}
+
+
+			/* working timeline css  */
+			/* .timeline-container{
+				max-width: 200mm;
+				margin: auto;
+			}
+			.timeline{
+				width: 85mm;
+				margin: 5mm;
+				display: inline-block;
+			}
+			
+			.timeline .year{
+				padding:8px;
+				background-color: #1e293b;
+				color: #ffffff;
+			}
+
+			.timeline:nth-child(even) .year{
+				background-color: #059669;
+			} */
+
+			/* not working in pdf */
+			.timeline-container{
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				position: relative;
+				gap: 80px;
+				max-width: 200mm;
+				margin: 50px auto;
+				margin-bottom: 100px;
+			}
+			.timeline-container::after{
+				content: '';
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 20px;
+				bottom: 15px;
+				border-left: solid 1px lightgray;
+				z-index: -1;
+			}
+			.timeline{
+				background: #f3f3f3;
+				box-shadow: 0px 6px 10px -5px rgb(191, 191, 191);
+			}
+			.timeline:nth-child(even){
+				transform: translateY(100px);
+			}
+			.timeline .year{
+				background: #000;
+				border-color: #000;
+				color: white;
+				padding: 0px 15px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				font-size: 12pt;
+				position: relative;
+			}
+			.timeline:nth-child(even) .year{
+				background-color: var(--primary);
+				border-color: var(--primary);
+			}
+			.timeline:nth-child(odd) .year::after{
+				content: '';
+				position: absolute;
+				left: 100%;
+				top: 0px;
+				bottom: 0px;
+				width: 30px;
+				border-top: 20px solid transparent;
+				border-left: 20px solid;
+				border-left-color: inherit;
+				border-bottom: 20px solid transparent;
+			}
+			
+			.timeline:nth-child(even) .year::after{
+				content: '';
+				position: absolute;
+				right: 100%;
+				top: 0px;
+				bottom: 0px;
+				width: 30px;
+				border-top: 20px solid transparent;
+				border-right: 20px solid;
+				border-right-color: inherit;
+				border-bottom: 20px solid transparent;
+			}
+
+			.timeline .year::before{
+				content: '';
+				position: absolute;
+				height:14px;
+				width:14px;
+				border: solid 2px;
+				border-color: inherit;
+				background: white;
+				right: -49px;
+				border-radius: 100%;
+			}
+			.timeline:nth-child(even) .year::before{
+				left: -49px;
+				right: unset;
+			}
+
+			.timeline .meta-data{
+				padding: 10px;
+			}
+
+			.timeline .label{
+				color: #000;
+			}
+			.timeline .value{
+				text-align: right;
+				font-weight: 600;
+			}
+
+			.payroll{
+				width: 49%;
+				display: inline-block;
+				padding: 20px;
+			}
+
+			.category{
+				padding: 10px;
+				background: #1e293b;
+				color: #ffffff;
+				margin: 0;
+			}
+
+			.payroll:nth-child(even) .category{
+				background-color: #059669;
+			}
+
+			.payroll .years{
+				border-left: dashed 1px;
+				padding-left: 10px;
+				padding-top: 10px;
+			}
+			.payroll .year{
+				position: relative;
+				margin-bottom: 20px;
+				border-radius: 10px;
+			}
+			.payroll .year::before{
+				content: '';
+				height: 16px;
+				width: 16px;
+				border-radius: 16px;
+				background: #000;
+				border:solid 4px white;
+				position:absolute;
+				left: -21px;
+				top: 0px;
+			}
+			
 		</style>
 	</head>
 	<body>
 	
 		<div class="container">	
-			<div><h1>Cover Page</h1></div>
+			<div class="cover">
+				<p>Wokers' Compensation Fund Control Board</p>
+				<div class="logo">
+					<img th:src="@{classpath:static/images/logo.png}" alt="WCFCB" style="width: 100%;"/>
+				</div>
+				<h1>OPERATIONS REPORT FOR THE QUARTER ENDED</h1>
+				
+				
+			</div>
 			<div style="page-break-before:always; break-before: page;"></div>
 			
 			<div><h1>Contents</h1></div>
 			<div style="page-break-before:always; break-before: page;"></div>
 			
 			
-			<div class="claim-stats">
+			<div>
 				<div class="header"><h1>Claim Statistics</h1></div>
-				
-				<div class="claim-breakdown" th:each="claim : ${claimStats}"
-					style="border: 5px solid #C0C0C0; 
-						margin: 2px; 
-						padding: 12px; border-radius: 10px;
-						width: 45%; display: inline-block; ">
-					<h2 class="year" th:text="${claim.year}">
-					</h2>
-					<div class="meta-data">
-						<table>
-							<tbody>
-								<tr th:each="claimMeta : ${claim.meta}">
-									<td th:text="${claimMeta.claimType}"></td>
-									<td th:text="${claimMeta.numberOfClaims}" style="font-weight: bold;"></td>
-								</tr>
-							</tbody>
-						</table>
-						
-					</div>
-				</div>				
+
+				<div class="timeline-container">
+					<div class="timeline" th:each="claim : ${claimStats}">
+						<h2 class="year" th:text="${claim.year}">
+						</h2>
+						<div class="meta-data">
+							<table>
+								<tbody>
+									<tr th:each="claimMeta : ${claim.meta}">
+										<td th:text="${claimMeta.claimType}" style="font-weight: bold;"></td>
+										<td th:text="${claimMeta.numberOfClaims}" ></td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+					</div>				
+				</div>
+
 			</div>	
+
 			
 			<div style="page-break-before:always; break-before: page;"></div>
 			<div class="revenue-stats" style="background-color: #C0C0C0;">
-				<h1 class="header">Revenue Stats</h1>
-				[[${employerStats}]]
+
+				<h1 >Revenue Stats</h1>
+				
 			</div>
 			
 			
@@ -165,14 +362,16 @@
 					</thead>
 					<tbody>
 						<tr th:each="sector : ${sectorStats}">
-							<td th:text="${sector.classDescription}"></td>
+							<td><b style="font-size: 9pt;" th:text="${sector.classDescription}"></b></td>
 							<td th:text="${sector.classCode}"></td>
 							<td class="right"
 								th:text="${sector.numberOfEmployers}"></td>
 							<td class="right"
 								th:text="${sector.coveredLastYear}"></td>
 							<td class="right"
-								th:text="${sector.coveredThisYear}"></td>
+								th:text="${sector.coveredThisYear}"
+								th:class="${sector.coveredThisYear > sector.coveredLastYear ? 'right good' : 'right bad'}"
+								></td>
 							<td class="right"
 								th:text="${sector.numberOfClaims}"></td>
 						</tr>
@@ -185,19 +384,47 @@
 			<div class="payroll-stats">
 				<h1 class="header">Payroll Statistics</h1>
 				
-				<div th:each="payrollStat : ${payrollStats}" 
-					style="width: 49%; display: inline-block;
-						box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-						padding: 5px 0px 5px 5px;">
-					<h2 th:text="${payrollStat.category}" style="border-bottom: 1px solid gray;"></h2>
-					<div th:each="tranYearDTO : ${payrollStat.tranYears}" >
-						<h3 th:text="${tranYearDTO.tranYear}"></h3>
-						<div th:each="metaData : ${tranYearDTO.meta}">
-							<span th:text="${metaData.numberOfBeneficiaries}"></span>							
-							<span th:text="${metaData.totalPaid}" 
-								style="font-weight: 600;"></span>
+				<!-- <div style="margin: auto;">
+					<div th:each="payrollStat : ${payrollStats}" class="payroll">
+						<h2 th:text="${payrollStat.category}" class="category"></h2>
+						<div class="years">
+							<div th:each="tranYearDTO : ${payrollStat.tranYears}" class="year">
+								<h3 th:text="${tranYearDTO.tranYear}" style="text-align: left;"></h3>
+								<table class="meta-data">
+									<tbody>
+										<tr th:each="metaData : ${tranYearDTO.meta}">
+											<td th:text="${metaData.numberOfBeneficiaries}"></td>							
+											<td class="right" th:text="'K ' + ${#numbers.formatDecimal(metaData.totalPaid, 0, 'COMMA', 2, 'POINT')}" 
+												style="font-weight: 600;"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
+				</div> -->
+
+				<div th:each="payrollStat : ${payrollStats}">
+					<div class="header"><h1 th:text="${payrollStat.category}">Claim Statistics</h1></div>
+	
+					<div class="timeline-container">
+						<div class="timeline" th:each="tranYearDTO : ${payrollStat.tranYears}">
+							<h2 class="year"  th:text="${tranYearDTO.tranYear}">
+							</h2>
+							<div class="meta-data">
+								<table>
+									<tbody>
+										<tr th:each="metaData : ${tranYearDTO.meta}">
+											<td th:text="${metaData.numberOfBeneficiaries}" style="font-weight: bold;"></td>
+											<td th:text="${#numbers.formatDecimal(metaData.totalPaid, 0, 'COMMA', 2, 'POINT')}" ></td>
+										</tr>
+									</tbody>
+								</table>
+								
+							</div>
+						</div>				
+					</div>
+					<div style="page-break-before:always; break-before: page;"></div>
 				</div>
 				
 			</div>	
@@ -205,7 +432,25 @@
 			<div style="page-break-before:always; break-before: page;"></div>
 			<div class="payroll-dep-stats" style="margin: 5px 0px;">
 				<h1 class="header">Payroll - Dependant Breakdown</h1>
-				[[${payrollDependantStats}]]
+				<table>
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th>Relation</th>
+							<th class="right">number Of Beneficiaries</th>
+							<th class="right">Total Paid</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="dependant : ${payrollDependantStats}">
+							<td th:text="${dependant.tranYear}"></td>
+							<td th:text="${dependant.relation}"></td>
+							<td th:text="${dependant.numberOfBeneficiaries}" class="right"></td>
+							<td th:text="'K ' + ${#numbers.formatDecimal(dependant.totalPaid, 0, 'COMMA', 2, 'POINT')}" class="right" style="font-weight: 600;"></td>
+						</tr>
+					</tbody>
+					
+				</table>
 			</div>
 			
 				

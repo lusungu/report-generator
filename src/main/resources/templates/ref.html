@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        :root{
+            --primary: green;
+        }
+        table {
+            width: 100%;
+            padding: 50px 0px;
+            border-collapse: collapse;
+        }
+        
+        table thead tr th {
+            text-align: left;
+            background-color: whitesmoke;
+            padding: 5px;
+        }
+        
+        td { 
+            padding: 2px;
+            text-align: left;
+        }
+
+        /* .timeline-container{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            position: relative;
+            gap: 80px;
+            max-width: 200mm;
+            margin: 50px auto;
+            margin-bottom: 100px;
+        }
+        .timeline-container::after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+            bottom: 15px;
+            border-left: solid 1px lightgray;
+            z-index: -1;
+        }
+        .timeline{
+            background: #f3f3f3;
+            box-shadow: 0px 6px 10px -5px rgb(191, 191, 191);
+        }
+        .timeline:nth-child(even){
+            transform: translateY(100px);
+        }
+        .timeline .year{
+            background: #000;
+            border-color: #000;
+            color: white;
+            padding: 0px 15px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            font-size: 12pt;
+            position: relative;
+        }
+        .timeline:nth-child(even) .year{
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        .timeline:nth-child(odd) .year::after{
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 0px;
+            bottom: 0px;
+            width: 30px;
+            border-top: 20px solid transparent;
+            border-left: 20px solid;
+            border-left-color: inherit;
+            border-bottom: 20px solid transparent;
+        }
+        
+        .timeline:nth-child(even) .year::after{
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0px;
+            bottom: 0px;
+            width: 30px;
+            border-top: 20px solid transparent;
+            border-right: 20px solid;
+            border-right-color: inherit;
+            border-bottom: 20px solid transparent;
+        }
+
+        .timeline .year::before{
+            content: '';
+            position: absolute;
+            height:14px;
+            width:14px;
+            border: solid 2px;
+            border-color: inherit;
+            background: white;
+            right: -49px;
+            border-radius: 100%;
+        }
+        .timeline:nth-child(even) .year::before{
+            left: -49px;
+            right: unset;
+        }
+
+        .timeline .meta-data{
+            padding: 10px;
+        }
+
+        .timeline .label{
+            color: #000;
+        }
+        .timeline .value{
+            text-align: right;
+            font-weight: 600;
+        } */
+
+        .timeline-container{
+            max-width: 200mm;
+        }
+        .timeline{
+            width: 89mm;
+            margin: 5mm;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="timeline-container">
+
+        <!-- <div class="header"><h1>Claim Statistics</h1></div> -->
+                    
+        <div class="timeline">
+            <h2 class="year">2023</h2>
+            <div class="meta-data">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="label">Non-Fatal</td>
+                            <td class="value">150</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Fatal</td>
+                            <td class="value">44</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Disease</td>
+                            <td class="value">34</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+                    
+        <div class="timeline">
+            <h2 class="year">2023</h2>
+            <div class="meta-data">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="label">Non-Fatal</td>
+                            <td class="value">150</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Fatal</td>
+                            <td class="value">44</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Disease</td>
+                            <td class="value">34</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+                    
+        <div class="timeline">
+            <h2 class="year">2023</h2>
+            <div class="meta-data">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="label">Non-Fatal</td>
+                            <td class="value">150</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Fatal</td>
+                            <td class="value">44</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Disease</td>
+                            <td class="value">34</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <h2 class="year">2022</h2>
+            <div class="meta-data">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="label">Non-Fatal</td>
+                            <td class="value">604</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Disease</td>
+                            <td class="value">114</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Fatal</td>
+                            <td class="value">122</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>			
+
+    </div>
+
+    <h1 style="text-align: center;">somehk</h1>
+
+    
+</body>
+</html>

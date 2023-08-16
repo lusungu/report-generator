@@ -12,11 +12,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
-import org.xhtmlrenderer.pdf.ITextRenderer;
+//import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.elucive.reportgenerator.DTO.ClaimDTO;
 import com.elucive.reportgenerator.DTO.PayrollDTO;
@@ -24,6 +24,7 @@ import com.elucive.reportgenerator.api.DTO.EmployerStatisticsDTO;
 import com.elucive.reportgenerator.api.DTO.PayrollDependantStatisticsDTO;
 import com.elucive.reportgenerator.api.DTO.SectorStatisticsDTO;
 import com.elucive.reportgenerator.service.ReportJsonService;
+import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -80,6 +81,7 @@ public class ReportPDFController {
 			
 			final OutputStream outStream = response.getOutputStream();
 			
+			/*
 			ITextRenderer renderer = new ITextRenderer();
 			renderer.setDocumentFromString(processedHtml);
 			renderer.layout();
@@ -87,9 +89,16 @@ public class ReportPDFController {
 			renderer.createPDF(outStream, false);
 			renderer.finishPDF();
 			
-	        outStream.close();
+	        outStream.close(); */
+	        
+	        PdfRendererBuilder builder = new PdfRendererBuilder();
+            builder.useFastMode();
+            builder.withHtmlContent(processedHtml, null);
+            builder.toStream(outStream);
+            builder.run();
+	        
 	        log.info("Downloaded - {}", fileName);
-			
+	        outStream.close();
 		} catch (Exception e) {
 			log.error("Error occured", e);
 		}
@@ -111,7 +120,7 @@ public class ReportPDFController {
         templateResolver.setPrefix("templates/");
         templateResolver.setCharacterEncoding("UTF-8");
         
-        TemplateEngine templateEngine = new TemplateEngine();
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
         
         Context ctx = new Context();
@@ -146,16 +155,7 @@ public class ReportPDFController {
 				ctx.setVariable("payrollStats", pair.getValue());
 			}
 		} 
-		/*
-		if (payrollDepStatData != null) {
-			Iterator<Entry<List<PayrollDependantStatisticsDTO>, List<PayrollDependantStatisticsDTO>>> itMap = payrollDepStatData.entrySet().iterator();
-			while (itMap.hasNext()) {
-				Entry<List<PayrollDependantStatisticsDTO>, List<PayrollDependantStatisticsDTO>> pair = itMap.next();
-				ctx.setVariable("payrollDependantStats", pair.getValue());
-			}
-		}
-		*/
-        
+
         ctx.setVariable("nyu", "Emanuel");
 		String processedHtml = templateEngine.process(templateName, ctx);
 		
