@@ -1,355 +1,285 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
-	 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />		
 		<title>WCFCB Report</title>
-		
 		<style type="text/css">
+						
 			@page { 
 				size: A4 portrait;
-				margin: 4mm 6mm;				 
+				margin: 0mm 0mm;				 
 				background-size: 600px 600px;					
 				background-position: center;
-			    background-repeat: no-repeat;
+				background-repeat: no-repeat;
 			}
-			
+
 			*,
 			*::before,
 			*::after {			 	
-	            box-sizing: border-box;
-	            font-family: 'Nunito Sans','Calibri', 'Segoe UI', Arial, 'Trebuchet MS', Helvetica ;
-	            font-size: 11pt;
+				box-sizing: border-box;    
+				font-family: 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+				font-size: 11pt;
+				margin: 0px;
+				padding: 0px;
 			}
-			:root{
-				--primary: #059669;
-				--black: #1e293b;
+
+			a{
+				color: inherit;
+				text-decoration: none;
 			}
-			
-	        .container {
-				max-width: 898px;
-				padding: 0px 5px;
-				padding-bottom: 10px;
+
+			.container {
 				background: white;
-				margin: 5px auto;
 				display: flex;
 				flex-direction: column;
 				background: transparent;
+				margin: auto;
 			}
 
-			.header{
-				padding: 10px 0px;
-				border-bottom: solid 1px #1e293b;
+			.cover-page{
+				padding: 2cm;
 			}
 
-			.good{
-				color: #059669;
+			.logo{
+				width: 3cm;
+				height: 3cm;
+				margin: 1.5cm auto;
 			}
-			.bad{
-				color: red;
-			}
-			.cover{
+
+			.company{
+				font-size: 16pt;
+				font-weight: 800;
+				text-transform: uppercase;
 				text-align: center;
+			}
+
+			.title{
+				margin-top: 2cm;
+				font-size: 24pt;
+				text-align: center;
+				font-weight: 900;
+				display: grid;
+				align-content: center;
+			}
+
+			.table-content{
+				width: 8.27in;
+				min-height: 11in;
 				margin: auto;
 				padding: 2cm;
 			}
 
-			.cover .logo{
-				width: 120px;
-				height: 120px;
-				margin: 30px auto;
-			}
-							
-			.cover h1{
-				margin: 100px auto;
-				font-weight: bolder;
-			}
-			.center {
-				display: table-cell;
+			.content-logo{
+				width: 30%;
+				display: inline-block;
+				padding-right: 2cm;
 				text-align: center;
-				vertical-align: middle;
+				font-size: 16pt;
+				font-weight: 900;
 			}
-			table {
+			.content-logo p{
+				margin-top: 0.5cm;
+				color: #707070;
+			}
+			.content-list{
+				width: 69%;
+				height: 100%;
+				display: inline-block;
+				border-left: solid 1px #e7e7e7;
+				vertical-align: top;
+				padding-left: 2cm;
+			}
+
+			.content-list .heading{
+				font-size: 16pt;
+				padding: 20px 0;
+				margin-bottom: 2cm;
+				border-bottom: solid 1px #e7e7e7;
+			}
+
+			.content-list li{
+				list-style-position: inside;
+				padding: 10px 0px;
+				list-style: square inside;
+			}
+
+
+			.paper{
+				width: 8.27in;
+				min-height: 10.00in;
+				margin: auto;
+				padding: 0px 20px;
+			}
+
+			.paper .header{
+				border-bottom: solid 0.04in #10b981;
+				height: 0.8in;
+				padding:0.2in 0.5in;
+				padding-top: 0.4in;
+				font-size: 12pt;
+				text-transform: uppercase;
+				font-weight: 900;
+			}
+			.paper .body{
+				height: 10.69in;
+				background-color: transparent;
+				padding: 0.5in;
+			}
+			.timeline-table{
 				width: 100%;
-				padding: 50px 0px;
+			}
+			.timeline-table .caption{
+				width: 30%;
+				text-align: center;
+				background: #fff;
+			}
+
+
+			.timeline-table .caption span{
+				font-weight: bold;
+				font-size: 12pt;
+				color: #059669;
+			}
+			.timeline-table .content{
+				padding-top: 20px;
+			}
+			.timeline{
+				width: 100%;
 				border-collapse: collapse;
-				border: none;
+				background-color: #ecfdf5;
+				overflow: hidden;
 			}
-			
-			
-			div.claim-stats {
-				text-align: center;
-				align-content: center;
-				justify-content: center;
-				border: 0px solid black;
-				padding: 2px;
-			}
-			
-			div.header {
-				font-weight: 600;
-				font-size: 14pt;
-				border-bottom: 1px solid whitesmoke;
-				margin-bottom: 3px;
-			}
-			
-			.year{
-				background-color: whitesmoke;
-				padding: 5px;
-				margin: 3px;
-				text-align: center;
-			}
-			
-			div.meta-data {
-				padding: 0 5px;
-				margin: 1px;
-			}
-			
-			h1 {
-				font-size: 14pt;
-			}
-			
-			h2 {
-				font-size: 13pt;
-			}
-			td, th, caption{
-				padding: 12px 8px;
+			.timeline td{
+				padding: 0.1in;
+				color: #374151;
 				font-size: 10pt;
 			}
-			th{
+			.timeline th{
+				padding: 0.1in;
+				background: #a3f3d0;
+				color: #065a46;
+			}
+
+			thead tr{
+				background: #a7f3d0;
+				color: #059669;
 				text-align: left;
 			}
-			tr:nth-child(even){
-				background: #eeeeee;
+			.timeline thead tr{
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
 			}
-			
-			tbody tr td.right {
+
+			.right{
 				text-align: right;
 			}
-			
-			thead tr th.right {
-				text-align: right;
-			}
-			
-			thead{
-				background: #1e293b;
-				color: white;
-			}
 
-
-			/* working timeline css  */
-			/* .timeline-container{
-				max-width: 200mm;
-				margin: auto;
+			.table-layout{
+				border-collapse: collapse;
+				width: 100%;
+				border-bottom: solid 2px #059669;
 			}
-			.timeline{
-				width: 85mm;
-				margin: 5mm;
-				display: inline-block;
+			.table-layout tbody tr td {
+				border-bottom: solid 1px #e7e7e7;
+				padding: 10px 0px;
+				font-size: 9pt;
+				color: #374151;
 			}
-			
-			.timeline .year{
-				padding:8px;
-				background-color: #1e293b;
-				color: #ffffff;
+			.table-layout tbody tr:nth-child(even){
+				background-color: #e7e7e7;
 			}
-
-			.timeline:nth-child(even) .year{
-				background-color: #059669;
-			} */
-
-			/* not working in pdf */
-			.timeline-container{
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				position: relative;
-				gap: 80px;
-				max-width: 200mm;
-				margin: 50px auto;
-				margin-bottom: 100px;
-			}
-			.timeline-container::after{
-				content: '';
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
-				top: 20px;
-				bottom: 15px;
-				border-left: solid 1px lightgray;
-				z-index: -1;
-			}
-			.timeline{
-				background: #f3f3f3;
-				box-shadow: 0px 6px 10px -5px rgb(191, 191, 191);
-			}
-			.timeline:nth-child(even){
-				transform: translateY(100px);
-			}
-			.timeline .year{
-				background: #000;
-				border-color: #000;
-				color: white;
-				padding: 0px 15px;
-				height: 40px;
-				display: flex;
-				align-items: center;
-				font-size: 12pt;
-				position: relative;
-			}
-			.timeline:nth-child(even) .year{
-				background-color: var(--primary);
-				border-color: var(--primary);
-			}
-			.timeline:nth-child(odd) .year::after{
-				content: '';
-				position: absolute;
-				left: 100%;
-				top: 0px;
-				bottom: 0px;
-				width: 30px;
-				border-top: 20px solid transparent;
-				border-left: 20px solid;
-				border-left-color: inherit;
-				border-bottom: 20px solid transparent;
-			}
-			
-			.timeline:nth-child(even) .year::after{
-				content: '';
-				position: absolute;
-				right: 100%;
-				top: 0px;
-				bottom: 0px;
-				width: 30px;
-				border-top: 20px solid transparent;
-				border-right: 20px solid;
-				border-right-color: inherit;
-				border-bottom: 20px solid transparent;
-			}
-
-			.timeline .year::before{
-				content: '';
-				position: absolute;
-				height:14px;
-				width:14px;
-				border: solid 2px;
-				border-color: inherit;
-				background: white;
-				right: -49px;
-				border-radius: 100%;
-			}
-			.timeline:nth-child(even) .year::before{
-				left: -49px;
-				right: unset;
-			}
-
-			.timeline .meta-data{
-				padding: 10px;
-			}
-
-			.timeline .label{
-				color: #000;
-			}
-			.timeline .value{
-				text-align: right;
-				font-weight: 600;
-			}
-
-			.payroll{
-				width: 49%;
-				display: inline-block;
-				padding: 20px;
-			}
-
-			.category{
-				padding: 10px;
-				background: #1e293b;
-				color: #ffffff;
-				margin: 0;
-			}
-
-			.payroll:nth-child(even) .category{
-				background-color: #059669;
-			}
-
-			.payroll .years{
-				border-left: dashed 1px;
+			.table-layout tbody tr td:first-child
+			{
 				padding-left: 10px;
-				padding-top: 10px;
 			}
-			.payroll .year{
-				position: relative;
-				margin-bottom: 20px;
-				border-radius: 10px;
+			.table-layout tbody tr td:last-child{
+				padding-right: 10px;
 			}
-			.payroll .year::before{
-				content: '';
-				height: 16px;
-				width: 16px;
-				border-radius: 16px;
-				background: #000;
-				border:solid 4px white;
-				position:absolute;
-				left: -21px;
-				top: 0px;
+			.table-layout tbody tr td.right {
+				text-align: right;
 			}
-			
+
+			.table-layout thead tr th.right {
+				text-align: right;
+			}
+
+			.table-layout thead tr th {
+				padding: 10px 0px;
+			} 
+			.table-layout thead tr th:last-child{
+				padding-right: 10px;
+			}
+			.table-layout thead tr th:first-child {
+				padding-left: 10px;
+			}
 		</style>
 	</head>
 	<body>
 	
-		<div class="container">	
-			<div class="cover">
-				<p>Wokers' Compensation Fund Control Board</p>
-				<div class="logo">
-					<img th:src="@{classpath:static/images/logo.png}" alt="WCFCB" style="width: 100%;"/>
+		<div class="cover-page">
+			<div class="logo">
+				<img th:src="@{classpath:static/images/logo.png}" alt="WCFCB" style="width: 100%;"/>
+			</div>
+			<h1  class="company">Wokers' Compensation Fund Control Board</h1>
+			<h2 class="title">OPERATIONS REPORT FOR THE QUARTER ENDED</h2>
+		</div>
+		<div style="page-break-before:always; break-before: page;"></div>
+
+			
+		<div class="table-content">
+			<div class="content-logo"> <img th:src="@{classpath:static/images/logo.png}" alt="WCFCB" style="width: 100%;"/> <p>WCFCB</p> </div>
+			<div class="content-list">
+				<h1 class="heading">Content</h1>
+				<div>
+					<ul>
+						<li><a href="#claims">Claim Statistics</a></li>
+						<!-- <li><a href="#revenue">Revenue Statistics</a> </li> -->
+						<li><a href="#sectors">Sector Statistics</a> </li>
+						<li><a href="#payroll">Payroll Statistics</a> </li>
+						<li><a href="#breakdown">Payroll Breakdown</a> </li>
+					</ul>
 				</div>
-				<h1>OPERATIONS REPORT FOR THE QUARTER ENDED</h1>
-				
-				
+			</div>
+		</div>
+		
+			<div style="page-break-before:always; break-before: page;"></div>
+
+			<div class="paper" id="claims">
+				<h1 class="header">Claim Statistics</h1>
+				<div class="body">
+					<table class="timeline-table" th:each="claim : ${claimStats}">
+						<tbody>
+							<tr>
+								<td class="caption"><span th:text="${claim.year}"></span></td>
+								
+								<td class="content">
+									<table class="timeline">
+										<thead>
+											<tr><th>Claim Type</th><th  class="right" style="padding-right: 20px;">Number of Claims</th></tr>
+										</thead>
+										<tbody>
+											<tr th:each="claimMeta : ${claim.meta}">
+												<td th:text="${claimMeta.claimType}" style="color: #065a46;"></td>
+												<td th:text="${claimMeta.numberOfClaims}" class="right" style="padding-right: 20px;" ></td>
+											</tr>
+										</tbody>
+									</table>	
+								</td>
+							</tr>
+
+						</tbody>
+					</table>						
+				</div>
 			</div>
 			<div style="page-break-before:always; break-before: page;"></div>
-			
-			<div><h1>Contents</h1></div>
-			<div style="page-break-before:always; break-before: page;"></div>
-			
-			
-			<div>
-				<div class="header"><h1>Claim Statistics</h1></div>
 
-				<div class="timeline-container">
-					<div class="timeline" th:each="claim : ${claimStats}">
-						<h2 class="year" th:text="${claim.year}">
-						</h2>
-						<div class="meta-data">
-							<table>
-								<tbody>
-									<tr th:each="claimMeta : ${claim.meta}">
-										<td th:text="${claimMeta.claimType}" style="font-weight: bold;"></td>
-										<td th:text="${claimMeta.numberOfClaims}" ></td>
-									</tr>
-								</tbody>
-							</table>
-							
-						</div>
-					</div>				
-				</div>
-
-			</div>	
 
 			
 			<div style="page-break-before:always; break-before: page;"></div>
-			<div class="revenue-stats" style="background-color: #C0C0C0;">
-
-				<h1 >Revenue Stats</h1>
-				
-			</div>
-			
-			
-			<div style="page-break-before:always; break-before: page;"></div>
-			<div class="sector-stats">
+			<div class="paper" id="sectors">
 				<h1 class="header">Sector Stats</h1>
-				
-				<table id="sectorTable">
-					<caption>Sector analysis for they financial year: </caption>
+				<table id="sectorTable" class="table-layout">
+					<!-- <caption>Sector analysis for they financial year: </caption> -->
 					<thead>
 						<tr>
 							<th>Class</th>
@@ -362,78 +292,81 @@
 					</thead>
 					<tbody>
 						<tr th:each="sector : ${sectorStats}">
-							<td><b style="font-size: 9pt;" th:text="${sector.classDescription}"></b></td>
+							<td><b style="font-size: 9pt; color: #065a46;" th:text="${sector.classDescription}"></b></td>
 							<td th:text="${sector.classCode}"></td>
 							<td class="right"
-								th:text="${sector.numberOfEmployers}"></td>
+								th:text="${#numbers.formatDecimal(sector.numberOfEmployers, 0, 'COMMA', 0, 'POINT')}"></td>
 							<td class="right"
-								th:text="${sector.coveredLastYear}"></td>
+								th:text="${#numbers.formatDecimal(sector.coveredLastYear, 0, 'COMMA', 0, 'POINT')}"></td>
 							<td class="right"
-								th:text="${sector.coveredThisYear}"
+								th:text="${#numbers.formatDecimal(sector.coveredThisYear, 0, 'COMMA', 0, 'POINT')}"
 								
 								></td>
 							<td class="right"
-								th:text="${sector.numberOfClaims}"></td>
+								th:text="${#numbers.formatDecimal(sector.numberOfClaims, 0, 'COMMA', 0, 'POINT')}"></td>
 						</tr>
 					</tbody>
 				</table>
-				
 			</div>
 			
 			<div style="page-break-before:always; break-before: page;"></div>
-			<div class="payroll-stats">
+			<div class="paper" id="payroll">
 				<h1 class="header">Payroll Statistics</h1>
-
-				<div th:each="payrollStat : ${payrollStats}">
-					<div class="header"><h1 th:text="${payrollStat.category}">Claim Statistics</h1></div>
-	
-					<div class="timeline-container">
-						<div class="timeline" th:each="tranYearDTO : ${payrollStat.tranYears}">
-							<h2 class="year"  th:text="${tranYearDTO.tranYear}">
-							</h2>
-							<div class="meta-data">
-								<table>
-									<tbody>
-										<tr th:each="metaData : ${tranYearDTO.meta}">
-											<td th:text="${metaData.numberOfBeneficiaries}" style="font-weight: bold;"></td>
-											<td th:text="${#numbers.formatDecimal(metaData.totalPaid, 0, 'COMMA', 2, 'POINT')}" ></td>
-										</tr>
-									</tbody>
-								</table>
-								
-							</div>
-						</div>				
+				<div class="body">
+					<div  th:each="payrollStat : ${payrollStats}" style=" margin-bottom: 20px;">
+						<h2 th:text="${payrollStat.category}" style="font-size: 10pt; padding: 10px 10px; text-transform: uppercase; font-weight: bold; background-color: #0f172a0e; color: #0f172a;"></h2>
+						<table class="timeline-table" th:each="tranYearDTO : ${payrollStat.tranYears}">
+							<tbody>
+								<tr>
+									<td class="caption"><span  th:text="${tranYearDTO.tranYear}"></span></td>
+									
+									<td class="content">
+										<table class="timeline">
+											<thead>
+												<tr>
+													<th>Number of Beneficiaries</th>
+													<th class="right" style="padding-right: 20px;">Total Paid</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="metaData : ${tranYearDTO.meta}">
+													<td th:text="${#numbers.formatDecimal(metaData.numberOfBeneficiaries, 0, 'COMMA', 0, 'POINT')}" style="color: #065a46;"></td>
+													<td th:text=" 'K ' + ${#numbers.formatDecimal(metaData.totalPaid, 0, 'COMMA', 2, 'POINT')}" class="right"></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div style="page-break-before:always; break-before: page;"></div>
 				</div>
-				
 			</div>	
 			
 			<div style="page-break-before:always; break-before: page;"></div>
-			<div class="payroll-dep-stats" style="margin: 5px 0px;">
+			<div class="paper" id="breakdown">
 				<h1 class="header">Payroll - Dependant Breakdown</h1>
-				<table>
+				<table class="table-layout">
 					<thead>
 						<tr>
 							<th>Year</th>
 							<th>Relation</th>
-							<th class="right">number Of Beneficiaries</th>
+							<th class="right">Number Of Beneficiaries</th>
 							<th class="right">Total Paid</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="dependant : ${payrollDependantStats}">
 							<td th:text="${dependant.tranYear}"></td>
-							<td th:text="${dependant.relation}"></td>
-							<td th:text="${dependant.numberOfBeneficiaries}" class="right"></td>
-							<td th:text="${#numbers.formatDecimal(dependant.totalPaid, 0, 'COMMA', 2, 'POINT')}" class="right" style="font-weight: 600;"></td>
+							<td th:text="${dependant.relation}" style="font-weight: bold; color: #065a46;"></td>
+							<td th:text="${#numbers.formatDecimal(dependant.numberOfBeneficiaries, 0, 'COMMA', 0, 'POINT')}" class="right"></td>
+							<td th:text="'K '+${#numbers.formatDecimal(dependant.totalPaid, 0, 'COMMA', 2, 'POINT')}" class="right" style="font-weight: 600;"></td>
 						</tr>
 					</tbody>
 					
 				</table>
 			</div>
+			<div style="page-break-before:always; break-before: page;"></div>
 			
-				
-		</div>
 	</body>
 </html>
