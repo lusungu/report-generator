@@ -24,6 +24,7 @@ import com.elucive.reportgenerator.api.DTO.EmployerStatisticsDTO;
 import com.elucive.reportgenerator.api.DTO.PayrollDependantStatisticsDTO;
 import com.elucive.reportgenerator.api.DTO.SectorStatisticsDTO;
 import com.elucive.reportgenerator.service.ReportJsonService;
+import com.elucive.reportgenerator.util.DateUtil;
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -155,8 +156,18 @@ public class ReportPDFController {
 				ctx.setVariable("payrollStats", pair.getValue());
 			}
 		} 
+		
+		if (payrollDepStatData != null) {
+			Iterator<Entry<List<PayrollDependantStatisticsDTO>, List<PayrollDependantStatisticsDTO>>> itMap = payrollDepStatData.entrySet().iterator();
+			while (itMap.hasNext()) {
+				Entry<List<PayrollDependantStatisticsDTO>, List<PayrollDependantStatisticsDTO>> pair = itMap.next();
+				ctx.setVariable("payrollDependantStats", pair.getValue());
+			}
+		} 
 
-        ctx.setVariable("nyu", "Emanuel");
+        ctx.setVariable("financialYear", DateUtil.getYear());
+        ctx.setVariable("currentQuarter", DateUtil.getCurrentQuarter());
+        
 		String processedHtml = templateEngine.process(templateName, ctx);
 		
 		return processedHtml;
